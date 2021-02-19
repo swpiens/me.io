@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "dev": "vuepress dev vuepress/docs/src -p 9009",
+    "build": "vuepress build vuepress/docs/src"
+  },
   "devDependencies": {
     "vuepress": "^1.8.2"
   }
