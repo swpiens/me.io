@@ -1,4 +1,30 @@
-- name: Vuepress deploy
-  # You may pin to the exact commit or the version.
-  # uses: jenkey2011/vuepress-deploy@a63b088586c5ed53fde43899bd88e374cd361ecb
-  uses: jenkey2011/vuepress-deploy@1.0.1
+name: build & deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: Install and Build
+      run: |
+        npm install
+        npm run build
+        
+    - name: Deploy Build Files
+      env:
+        ACCESS_TOKEN: ${{ secrets.MY_FIRST_SECRET }}
+      run: |
+        cd vuepress/docs/src/.vuepress/dist
+        git config --global user.email "swpiens@gmail.com"
+        git config --global user.name "swpiens"
+        git init
+        git add -A
+        git commit -m 'deploy with vuepress'
+        git push -f https://${MY_FIRST_PERSONAL_ACCESS_TOKEN}@github.com/swpiens/me.io.git master:gh-pages
