@@ -1,0 +1,19 @@
+{
+  "name": "me.io",
+  "version": "0.0.1",
+  "description": "me.io",
+  "main": "index.js",
+  "authors": {
+    "name": "swpiens",
+    "email": "swpiens@gmail.com"
+  },
+  "repository": "https://github.com/swpiens/me.io.git/me.io",
+  "scripts": {
+    "dev": "vuepress dev src -p 9009",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
